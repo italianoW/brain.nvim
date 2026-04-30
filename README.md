@@ -27,16 +27,7 @@ A minimal Neovim plugin to quickly capture notes into a local `~/brain` folder.
 }
 ```
 
-### Using [packer.nvim](https://github.com/wbthomason/packer.nvim)
 
-```lua
-use {
-  "~/.config/nvim/plugins/brain.nvim",
-  config = function()
-    require("brain").setup()
-  end,
-}
-```
 
 ## Usage
 
