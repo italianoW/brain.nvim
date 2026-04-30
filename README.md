@@ -66,15 +66,3 @@ require("brain").setup({
 ```
 
 ---
-
-## File Structure
-
-```
-brain.nvim/
-├── plugin/
-│   └── brain.lua       ← registers :Brain command
-├── lua/
-│   └── brain/
-│       └── init.lua    ← core logic
-└── README.md
-```
