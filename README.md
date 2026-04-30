@@ -17,9 +17,8 @@ A minimal Neovim plugin to quickly capture notes into a local `~/brain` folder.
 
 ```lua
 {
-  dir = "~/.config/nvim/plugins/brain.nvim", -- if using locally
-  -- or use a GitHub path if you publish it:
-  -- "yourusername/brain.nvim",
+ 
+  "italianoW/brain.nvim",
   config = function()
     require("brain").setup({
       brain_dir = vim.fn.expand("~/brain"), -- default
@@ -38,22 +37,6 @@ use {
   end,
 }
 ```
-
-### Manual
-
-Copy the plugin to your Neovim runtime path:
-
-```bash
-cp -r brain.nvim ~/.config/nvim/plugins/brain.nvim
-```
-
-Then add to your `init.lua`:
-
-```lua
-require("brain").setup()
-```
-
----
 
 ## Usage
 
