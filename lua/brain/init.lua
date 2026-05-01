@@ -1,8 +1,7 @@
 -- brain/init.lua
--- Public API — thin entry point that wires config + ui
-
 local config = require("brain.config")
 local ui     = require("brain.ui")
+local search = require("brain.search")
 
 local M = {}
 
@@ -12,6 +11,10 @@ end
 
 function M.open()
   ui.open()
+end
+
+function M.search()
+  search.open()
 end
 
 return M
