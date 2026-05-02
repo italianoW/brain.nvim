@@ -134,7 +134,7 @@ function M.open()
 
   -- Prompt hint
   vim.api.nvim_buf_set_extmark(input_buf, ns, 0, 0, {
-    virt_text = { { " 🔍 <Enter> open · < r> delete · <Tab>/<S-Tab> navigate · <Esc> cancel", "Comment" } },
+    virt_text = { { " 🔍 <Enter> open · <S-' 'd> delete · <Tab>/<S-Tab> navigate · <Esc> cancel", "Comment" } },
     virt_text_pos = "right_align",
   })
 
@@ -216,8 +216,8 @@ function M.open()
   vim.keymap.set("i", "<CR>",    open_selected,   km)
   vim.keymap.set("i", "<Esc>",   close_all,       km)
   vim.keymap.set("n", "<Esc>",   close_all,       km)
-  vim.keymap.set("i", "S-<leader>r",   delete_selected, km)
-  vim.keymap.set("n", "S-<leader>r",   delete_selected, km)
+  vim.keymap.set("i", "S-<leader>d",   delete_selected, km)
+  vim.keymap.set("n", "S-<leader>d",   delete_selected, km)
   vim.keymap.set("i", "<Tab>",   function() move_cursor(1)  end, km)
   vim.keymap.set("i", "<S-Tab>", function() move_cursor(-1) end, km)
   vim.keymap.set("n", "<Tab>",   function() move_cursor(1)  end, km)
