@@ -17,12 +17,10 @@ A minimal Neovim plugin to quickly capture notes into a local `~/brain` folder.
 
 ```lua
 {
- 
-  "italianoW/brain.nvim",
+  "italianow/brain.nvim",
+  dependencies = { "nvim-telescope/telescope.nvim" },
   config = function()
-    require("brain").setup({
-      brain_dir = vim.fn.expand("~/brain"), -- default
-    })
+    require("brain").setup()
   end,
 }
 ```
