@@ -1,10 +1,10 @@
 -- brain/note.lua
 -- Handles note creation, formatting, and saving to disk
-
+ 
 local config = require("brain.config")
-
+ 
 local M = {}
-
+ 
 local function ensure_dir()
   local dir = config.values.brain_dir
   if vim.fn.isdirectory(dir) == 0 then
@@ -12,7 +12,7 @@ local function ensure_dir()
   end
   return dir
 end
-
+ 
 local function title_to_filename(title)
   return title
     :gsub('[%s/\\:*?"<>|]', "_")
@@ -20,21 +20,21 @@ local function title_to_filename(title)
     :gsub("^_", "")
     :gsub("_$", "")
 end
-
+ 
 local function normalize_tags(raw)
   if not raw or raw == "" then
     return "(none)"
   end
   local list = {}
-  for tag in raw:gmatch("[^,%s]+") do
-    local t = tag:gsub("^#", "")
+  for tag in vim.gsplit(raw, ", ", { plain = true }) do
+    local t = tag:gsub("^#", ""):match("^%s*(.-)%s*$")
     if t ~= "" then
       table.insert(list, "#" .. t)
     end
   end
   return #list > 0 and table.concat(list, " ") or "(none)"
 end
-
+ 
 function M.format(title, tags, body)
   local lines = {
     "# " .. title,
@@ -51,12 +51,12 @@ function M.format(title, tags, body)
   end
   return lines
 end
-
+ 
 function M.save(title, tags, body)
   local dir = ensure_dir()
   local filepath = dir .. "/" .. title_to_filename(title) .. ".md"
   vim.fn.writefile(M.format(title, tags, body), filepath)
   return filepath
 end
-
+ 
 return M
